@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crux — a trainer for the pattern behind the problem</title>
+<meta name="description" content="A macOS trainer for algorithm interview patterns. Spaced repetition on the pattern, not the puzzle. Local, private, free.">
+<meta property="og:title" content="Crux">
+<meta property="og:description" content="Spaced repetition for algorithm patterns. It trains recognition, not recall.">
+<meta property="og:image" content="icon.png">
+<link rel="icon" href="icon.png">
+<style>
+  :root{
+    --bg:#08090B; --surface:#1A1E22; --surface2:#282C30;
+    --border:#2A2F35; --border-strong:#3A4048;
+    --ink:#F2F4F7; --ink-soft:#B4BCC6; --ink-faint:#99A1A7;
+    --accent:#22D3EE; --accent-hover:#5FE3F5;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink);
+    font:400 17px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Inter,system-ui,sans-serif;
+    padding:0 24px;
+  }
+  .wrap{max-width:1080px;margin:0 auto}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{color:var(--accent-hover)}
+
+  /* ---------- hero ---------- */
+  header{padding:112px 0 72px;text-align:center;position:relative;overflow:hidden}
+  header::after{ /* the forgetting curve, as a wash behind the title */
+    content:"";position:absolute;inset:-30% -20% auto;height:520px;z-index:-1;
+    background:radial-gradient(60% 60% at 50% 0%,rgba(34,211,238,.14),transparent 70%);
+  }
+  .icon{width:112px;height:112px;margin:0 auto 28px;display:block;
+        filter:drop-shadow(0 18px 40px rgba(34,211,238,.22))}
+  h1{font-size:64px;font-weight:700;letter-spacing:-2px;line-height:1.05}
+  .tag{font-size:22px;color:var(--ink-soft);margin:18px auto 0;max-width:640px;letter-spacing:-.2px}
+
+  .cta{margin-top:40px;display:flex;gap:16px;justify-content:center;align-items:center;flex-wrap:wrap}
+  .dl{
+    background:var(--accent);color:#08090B;font-weight:600;font-size:17px;
+    padding:15px 30px;border-radius:11px;display:inline-flex;gap:10px;align-items:center;
+    box-shadow:0 6px 26px rgba(34,211,238,.28);transition:.16s ease;
+  }
+  .dl:hover{background:var(--accent-hover);color:#08090B;transform:translateY(-1px);
+            box-shadow:0 10px 34px rgba(34,211,238,.36)}
+  .meta{color:var(--ink-faint);font-size:14px}
+
+  /* ---------- shot ---------- */
+  .shot{margin:64px auto 0;border-radius:14px;overflow:hidden;
+        border:1px solid var(--border-strong);box-shadow:0 40px 90px rgba(0,0,0,.6);
+        max-width:100%;display:block}
+
+  /* ---------- sections ---------- */
+  section{padding:88px 0;border-top:1px solid var(--border)}
+  h2{font-size:34px;font-weight:600;letter-spacing:-.8px;margin-bottom:12px}
+  .lede{color:var(--ink-soft);max-width:660px;margin-bottom:40px}
+
+  .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(268px,1fr))}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px}
+  .card h3{font-size:18px;font-weight:600;margin-bottom:8px;letter-spacing:-.2px}
+  .card p{color:var(--ink-soft);font-size:15px}
+
+  .note{background:var(--surface);border:1px solid var(--border-strong);
+        border-left:3px solid var(--accent);border-radius:12px;padding:24px 26px;
+        color:var(--ink-soft);font-size:15px;max-width:760px}
+  .note strong{color:var(--ink);font-weight:600}
+
+  dl.spec{display:grid;grid-template-columns:180px 1fr;gap:14px 28px;font-size:15px;max-width:760px}
+  dl.spec dt{color:var(--ink-faint)}
+  dl.spec dd{color:var(--ink-soft)}
+
+  footer{padding:56px 0 88px;border-top:1px solid var(--border);
+         color:var(--ink-faint);font-size:14px;display:flex;gap:20px;
+         justify-content:space-between;flex-wrap:wrap}
+
+  @media (max-width:720px){
+    header{padding:72px 0 48px}
+    h1{font-size:44px;letter-spacing:-1.4px}
+    .tag{font-size:19px}
+    section{padding:64px 0}
+    h2{font-size:27px}
+    dl.spec{grid-template-columns:1fr;gap:4px 0}
+    dl.spec dd{margin-bottom:12px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img class="icon" src="icon.png" alt="Crux">
+    <h1>Crux</h1>
+    <p class="tag">Spaced repetition for algorithm interview patterns.
+       It trains recognition, not recall.</p>
+    <div class="cta">
+      <a class="dl" href="https://github.com/gauthierpiarrette/crux-app/releases/download/v0.2.0/Crux.dmg">Download for macOS</a>
+      <span class="meta">2.5&nbsp;MB · macOS 13+ · Apple silicon · free</span>
+    </div>
+    <img class="shot" src="hero.png" alt="The Crux home screen: today's plan over a constellation of patterns">
+  </header>
+
+  <section>
+    <h2>Most practice trains the wrong thing</h2>
+    <p class="lede">Grinding problems teaches you those problems. What an interview asks
+       is whether you can see the structure in something you have never met — so that
+       is what gets scheduled here.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Scheduled on patterns, not problems</h3>
+        <p>Memory state attaches to a pattern and one facet of it — its trigger, its
+           invariant, its nearest wrong answer. The problem in front of you is drawn
+           fresh every time, so there is no puzzle to memorise.</p>
+      </div>
+      <div class="card">
+        <h3>Getting it wrong is the mechanism</h3>
+        <p>An answer you had to reach for is what sets a useful interval. Easy recall
+           teaches the scheduler almost nothing, which is why there is no accuracy
+           score anywhere in the app.</p>
+      </div>
+      <div class="card">
+        <h3>Half an hour, five days a week</h3>
+        <p>Each session plans against a budget and closes itself at the line. Two rest
+           days are part of the design — the counter measures weeks, never days.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What is in it</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>FSRS-6 scheduling</h3>
+        <p>The same forgetting-curve model behind modern spaced repetition, applied to
+           patterns rather than cards.</p>
+      </div>
+      <div class="card">
+        <h3>A cold solve, on the clock</h3>
+        <p>One problem per session, phase-gated. The editor stays locked until the
+           pattern and the complexity are committed in writing.</p>
+      </div>
+      <div class="card">
+        <h3>Step-through mechanisms</h3>
+        <p>Watch the algorithm run — frontier, queue, invariant — generated by executing
+           the real implementation, not drawn by hand.</p>
+      </div>
+      <div class="card">
+        <h3>A ledger that can prove itself wrong</h3>
+        <p>Delayed recall over months, and a calibration table that checks whether the
+           app's own grading predicts anything at all.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Where it stands</h2>
+    <div class="note">
+      <p><strong>Eight patterns are in rotation.</strong> The map shows thirty-four —
+      they are real entries and you can name them as rivals — but only eight currently
+      carry review items, so only eight are scheduled. More are being written.</p>
+      <p style="margin-top:14px">This is stated here for the same reason it is stated in
+      the app: a trainer that advertises a library four times the size of the one it
+      trains is not worth trusting about anything else.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Details</h2>
+    <dl class="spec">
+      <dt>Requirements</dt><dd>macOS 13 Ventura or later, Apple silicon</dd>
+      <dt>Price</dt><dd>Free</dd>
+      <dt>Your data</dt><dd>Stored locally on your Mac. Nothing is transmitted, ever —
+        there is no account, no server and no analytics. Export a full copy any time
+        from the File menu.</dd>
+      <dt>Your code</dt><dd>Solutions run isolated, with CPU and process limits.</dd>
+      <dt>Signing</dt><dd>Signed with a Developer ID and notarized by Apple, so it opens
+        without a warning.</dd>
+    </dl>
+  </section>
+
+  <footer>
+    <span>Crux — built by <a href="https://github.com/gauthierpiarrette">Gauthier Piarrette</a></span>
+    <span><a href="https://github.com/gauthierpiarrette/crux-app/releases/download/v0.2.0/Crux.dmg">Download</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
