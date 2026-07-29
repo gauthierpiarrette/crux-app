@@ -54,9 +54,9 @@
         max-width:100%;display:block}
 
   /* ---------- sections ---------- */
-  section{padding:88px 0;border-top:1px solid var(--border)}
+  section{padding:72px 0;border-top:1px solid var(--border)}
   h2{font-size:34px;font-weight:600;letter-spacing:-.8px;margin-bottom:12px}
-  .lede{color:var(--ink-soft);max-width:660px;margin-bottom:40px}
+  .lede{color:var(--ink-soft);max-width:660px;margin-bottom:34px}
 
   .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(268px,1fr))}
   .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px}
@@ -78,7 +78,7 @@
          border:1px solid var(--border-strong);box-shadow:0 30px 70px rgba(0,0,0,.55);
          background:var(--bg);aspect-ratio:1280/840}
   .frame img{width:100%;height:100%;display:block;object-fit:cover;
-             position:absolute;inset:0;opacity:0;transition:opacity .25s ease}
+             position:absolute;inset:0;opacity:0}
   .frame img.on{opacity:1}
   .controls{display:flex;align-items:center;gap:14px;margin-top:18px;flex-wrap:wrap}
   .controls button{
@@ -217,6 +217,13 @@
 
   <section>
     <h2>The rest of it</h2>
+    <figure style="margin-bottom:22px">
+      <img src="shots/room.jpg" loading="lazy"
+           alt="The Room: a cold solve, phase-gated, with the editor locked until the pattern is committed">
+      <figcaption>The cold solve. Seven phases, on the clock — and the editor stays
+        locked until the pattern and the complexity are written down, because experts
+        categorise before they type.</figcaption>
+    </figure>
     <div class="gallery">
       <figure>
         <img src="shots/ledger.jpg" loading="lazy"
@@ -259,6 +266,16 @@
       <dt>Signing</dt><dd>Signed with a Developer ID and notarized by Apple, so it opens
         without a warning.</dd>
     </dl>
+  </section>
+
+  <section style="text-align:center;border-top:1px solid var(--border)">
+    <h2 style="margin-bottom:10px">Try it</h2>
+    <p class="lede" style="margin:0 auto 30px">Free, and everything stays on your Mac.
+       If it is not for you, dragging it to the bin removes all of it.</p>
+    <div class="cta" style="margin-top:0">
+      <a class="dl" href="https://github.com/gauthierpiarrette/crux-app/releases/download/v0.2.0/Crux.dmg">Download for macOS</a>
+      <span class="meta">2.5&nbsp;MB · macOS 13+ · Apple silicon</span>
+    </div>
   </section>
 
   <footer>
