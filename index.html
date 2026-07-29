@@ -18,6 +18,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  body{overflow-x:hidden}
   body{
     background:var(--bg); color:var(--ink);
     font:400 17px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Inter,system-ui,sans-serif;
@@ -28,10 +29,22 @@
   a:hover{color:var(--accent-hover)}
 
   /* ---------- hero ---------- */
-  header{padding:112px 0 72px;text-align:center;position:relative;overflow:hidden}
-  header::after{ /* the forgetting curve, as a wash behind the title */
-    content:"";position:absolute;inset:-30% -20% auto;height:520px;z-index:-1;
-    background:radial-gradient(60% 60% at 50% 0%,rgba(34,211,238,.14),transparent 70%);
+  header{padding:112px 0 72px;text-align:center;position:relative}
+  /* A round glow behind the mark.
+     The first version was a wide, short box clipped by overflow:hidden, with a
+     gradient that reached transparent at 70% of an ellipse sized to that box —
+     so the wash met the clip before it had finished fading and read as a soft
+     RECTANGLE behind the icon. This is a square box with a circular gradient
+     that reaches zero at its own edge, so there is no boundary to see, and the
+     header no longer clips. */
+  header::after{
+    content:"";position:absolute;z-index:-1;pointer-events:none;
+    left:50%;top:40px;transform:translateX(-50%);
+    width:760px;height:760px;max-width:150vw;
+    background:radial-gradient(circle closest-side,
+                 rgba(34,211,238,.15),
+                 rgba(34,211,238,.06) 45%,
+                 rgba(34,211,238,0) 78%);
   }
   .icon{width:112px;height:112px;margin:0 auto 28px;display:block;
         filter:drop-shadow(0 18px 40px rgba(34,211,238,.22))}
